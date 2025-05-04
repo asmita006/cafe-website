@@ -4,10 +4,20 @@ import { BrowserRouter } from 'react-router-dom';
 import App from './App';
 import './index.css';
 
-createRoot(document.getElementById('root')!).render(
-  <StrictMode>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  </StrictMode>
-);
+// Get the root element
+const rootElement = document.getElementById('root');
+
+// Ensure the root element exists before rendering
+if (rootElement) {
+  const root = createRoot(rootElement);
+  
+  root.render(
+    <StrictMode>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </StrictMode>
+  );
+} else {
+  console.error('Could not find root element');
+}
